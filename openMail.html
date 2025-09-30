@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ouvrir l'email</title>
+</head>
+<body>
+  <h2>Comment voulez-vous ouvrir ce mail ?</h2>
+  <a id="appLink" target="_blank">📱 Ouvrir dans l’app</a>
+  <br><br>
+  <a id="webLink" target="_blank">🌐 Ouvrir dans le navigateur</a>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const messageId = params.get('messageId');
+    const subject = params.get('subject');
+    const from = params.get('from');
+    document.getElementById('appLink').href = `mailto:${from}?subject=${encodeURIComponent(subject)}`;
+    document.getElementById('webLink').href = `https://mail.google.com/mail/u/0/#inbox/${messageId}`;
+  </script>
+</body>
+</html>
